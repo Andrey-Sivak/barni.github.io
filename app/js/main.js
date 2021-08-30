@@ -47,7 +47,7 @@ window.addEventListener('load', function () {
         }
 
         const btn = document.querySelector('.mob-menu-btn');
-        const menu = document.querySelector('.menu');
+        const menu = document.querySelector('.menu__wrap');
 
         btn.addEventListener('click', function (e) {
             e.preventDefault();

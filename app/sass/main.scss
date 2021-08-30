@@ -19,7 +19,6 @@ html {
 }
 
 body {
-  //font-family: 'OfficinaSans', sans-serif;
   min-height: 100vh;
 }
 
@@ -29,8 +28,11 @@ body {
   top: 0;
   height: auto;
   transform: translateX(-50%);
-  width: 100%;
   z-index: 0;
+
+  @include response-to(medium) {
+    display: none;
+  }
 }
 
 .top-perek {
@@ -38,6 +40,8 @@ body {
   position: absolute;
   top: -3px;
   left: 20px;
+
+  display: none;
 
   img {
     image-rendering: pixelated;
@@ -47,6 +51,17 @@ body {
 .header {
   position: relative;
   z-index: 1;
+
+  @media(max-width: 1295px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include response-to(small) {
+    z-index: 2;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .main {
@@ -56,6 +71,21 @@ body {
   margin-right: auto;
   margin-top: 506px;
   width: fit-content;
+
+  @media(max-width: 1295px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include response-to(medium) {
+    margin-top: 375px;
+  }
+
+  @include response-to(small) {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 410px;
+  }
 
   &__items {
     position: relative;
@@ -67,14 +97,51 @@ body {
     background-size: contain;
     padding: 304px 47px 222px 115px;
     display: flex;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    @media(max-width: 1295px) {
+      width: 980px;
+      padding-bottom: 102px;
+      padding-left: 75px;
+      padding-top: 185px;
+    }
+
+    @include response-to(medium) {
+      background-position: left top;
+      padding-left: 45px;
+    }
+
+    @include response-to(small) {
+      width: 100%;
+      flex-direction: column;
+      background-image: unset;
+      margin-top: 0;
+      padding: 0;
+    }
   }
 
   &__item {
     color: #30582B;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include response-to(small) {
+      width: 100%;
+      text-align: center;
+    }
 
     &_img {
       filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.8));
       image-rendering: pixelated;
+
+      @include response-to(medium) {
+        image-rendering: unset;
+      }
+
+      @include response-to(small) {
+        filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.8));
+      }
     }
 
     &_title {
@@ -84,6 +151,16 @@ body {
       font-family: 'Tobi';
       text-transform: uppercase;
       position: relative;
+
+      @media(max-width: 1295px) {
+        font-size: 45px;
+        line-height: 57px;
+      }
+
+      @include response-to(medium) {
+        font-size: 36px;
+        line-height: 1;
+      }
 
       &:before {
         position: absolute;
@@ -97,6 +174,13 @@ body {
         width: 85px;
         height: 85px;
         left: 0;
+
+        @include response-to(small) {
+          font-size: 60px;
+          line-height: 72px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
       }
     }
 
@@ -105,47 +189,136 @@ body {
       font-weight: bold;
       font-size: 30px;
       line-height: 43px;
+
+      @include response-to(medium) {
+        font-size: 30px;
+        line-height: 1;
+        margin-top: 10px;
+      }
     }
 
     &.first {
       margin-right: 103px;
 
+      @media(max-width: 1295px) {
+        margin-right: 50px;
+      }
+
+      @include response-to(medium) {
+        margin-right: 20px;
+      }
+      
+      @include response-to(small) {
+        background-image: url('../img/paper1.png');
+        padding-top: 144px;
+        margin-right: 0;
+        padding-bottom: 179px;
+        margin-bottom: 10px;
+      }
+
       .main__item_img {
         margin-left: 40px;
         margin-bottom: 21px;
+
+        @include response-to(medium) {
+          width: 208px;
+          height: auto;
+        }
+
+        @include response-to(small) {
+          margin-left: 0;
+          margin-bottom: 110px;
+        }
       }
 
       .main__item_item {
         padding-left: 104px;
+
+        @include response-to(small) {
+          padding-left: 0;
+        }
       }
 
       .main__item_title {
         padding-left: 104px;
 
+        @include response-to(small) {
+          padding-left: 0;
+        }
+
         &:before {
           content: '1';
           top: -5px;
+
+          @include response-to(medium) {
+            top: 0;
+          }
+
+          @include response-to(small) {
+            top: -110px;
+          }
         }
       }
     }
 
     &.second {
+      
+      @include response-to(small) {
+        background-image: url('../img/paper2.png');
+        padding-top: 79px;
+        padding-bottom: 356px;
+      }
 
       .main__item_img {
         margin-left: 101px;
         margin-bottom: 35px;
+
+        @include response-to(medium) {
+          width: 193px;
+          height: auto;
+          margin-bottom: 15px;
+        }
+
+        @include response-to(small) {
+          margin-left: 0;
+          margin-bottom: 123px;
+        }
       }
 
       .main__item_item {
         padding-left: 112px;
+
+        @media(max-width: 1295px) {
+          padding-left: 100px;
+        }
+
+        @include response-to(small) {
+          padding-left: 0;
+        }
       }
 
       .main__item_title {
         padding-left: 112px;
 
+        @media(max-width: 1295px) {
+          padding-left: 100px;
+        }
+
+        @include response-to(small) {
+          padding-left: 0;
+        }
+
         &:before {
           content: '2';
           top: -13px;
+
+          @include response-to(medium) {
+            top: 0;
+          }
+
+          @include response-to(small) {
+            top: -110px;
+          }
         }
       }
     }
@@ -163,10 +336,42 @@ body {
 
   .main-caption {
     top: -129px;
+
+    @media(max-width: 1295px) {
+      width: 600px;
+      height: auto;
+    }
+
+    @include response-to(medium) {
+      width: 480px;
+      top: -90px;
+      image-rendering: unset!important;
+    }
+
+    @include response-to(small) {
+      width: 350px;
+      top: -58px;
+    }
   }
 
   &-date {
     top: 209px;
+
+    @media(max-width: 1295px) {
+      top: 130px;
+    }
+
+    @include response-to(medium) {
+      width: 400px;
+      height: auto;
+      top: 115px;
+      image-rendering: unset!important;
+    }
+
+    @include response-to(small) {
+      width: 300px;
+      top: 96px;
+    }
   }
 
   &-bear {
@@ -175,6 +380,20 @@ body {
     right: -19px;
     top: -472px;
     image-rendering: pixelated;
+
+    @include response-to(medium) {
+      width: 400px;
+      height: auto;
+      right: 91px;
+      top: -362px;
+    }
+
+    @include response-to(small) {
+      width: 384px;
+      top: -365px;
+      left: 15px;
+      image-rendering: unset;
+    }
   }
 
   &-note {
@@ -184,6 +403,17 @@ body {
     left: 316px;
     z-index: 6;
     image-rendering: pixelated;
+
+    @include response-to(medium) {
+      bottom: 20px;
+      left: 246px;
+    }
+
+    @include response-to(small) {
+      bottom: 238px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &-rules {
@@ -196,9 +426,19 @@ body {
     font-family: 'rotondac';
     top: -190px;
     color: #fff;
+    z-index: 11;
     padding: 8px 17px 10px 13px;
     left: 50%;
     transform: translateX(-50%);
+
+    @include response-to(medium) {
+      top: -155px;
+    }
+
+    @include response-to(small) {
+      top: -104px;
+      white-space: nowrap;
+    }
   }
 
   &-monkey {
@@ -206,6 +446,10 @@ body {
     z-index: 6;
     left: -221px;
     top: -231px;
+
+    @include response-to(small) {
+      display: none;
+    }
   }
 
   &-monkey2 {
@@ -213,6 +457,13 @@ body {
     z-index: 4;
     left: -320px;
     bottom: 105px;
+
+    @include response-to(small) {
+      width: 218px;
+      height: auto;
+      left: -7px;
+      bottom: 110px;
+    }
   }
 
   &-heron {
@@ -220,6 +471,34 @@ body {
     z-index: 7;
     top: -389px;
     right: 422px;
+
+    @include response-to(medium) {
+      top: -315px;
+    }
+
+    @include response-to(small) {
+      display: none;
+    }
+  }
+
+  &-calculator,
+  &-star {
+    display: none;
+    position: absolute;
+
+    @include response-to(small) {
+      display: block;
+    }
+  }
+
+  &-calculator {
+    left: 0;
+    top: -430px;
+  }
+
+  &-star {
+    left: 7px;
+    top: 568px;
   }
 
   .leaf {
@@ -236,17 +515,43 @@ body {
         transform: rotate(334deg) scale(-1, 1);
         top: 33px;
         left: 140px;
+
+        @media(max-width: 1295px) {
+          width: 130px;
+          height: auto;
+        }
+
+        @include response-to(small) {
+          width: 82px;
+          top: 234px;
+          left: -9px;
+          transform: rotate(0deg) scale(-1, 1);
+        }
       }
 
       &-inner-right {
         transform: rotate(6deg) scale(-1, 1);
         right: 88px;
         bottom: 147px;
+
+        @media(max-width: 1295px) {
+          bottom: 17px;
+        }
+
+        @include response-to(small) {
+          transform: unset;
+          bottom: 80px;
+          right: 51px;
+        }
       }
 
       &-out-center {
         top: -310px;
         left: 564px;
+
+        @include response-to(medium) {
+          display: none;
+        }
       }
 
       &-out-left {
@@ -259,6 +564,11 @@ body {
         transform: rotate(0deg) scale(1, -1);
         top: -258px;
         right: -81px;
+
+        @include response-to(small) {
+          top: 620px;
+          right: 24px;
+        }
       }
     }
 
@@ -268,23 +578,41 @@ body {
         transform: rotate(35deg);
         bottom: 128px;
         left: 551px;
+
+        @media(max-width: 1295px) {
+          left: 480px;
+        }
+
+        @include response-to(medium) {
+          bottom: 28px;
+        }
       }
 
       &-inner-top {
         transform: rotate(165deg);
         top: 196px;
         right: 129px;
+
+        @include response-to(small) {
+          top: 500px;
+          transform: rotate(148deg);
+          right: 45px;
+        }
       }
 
       &-out {
         top: -130px;
         left: 260px;
         transform: rotate(65deg);
+
+        @include response-to(small) {
+          top: 920px;
+          left: 60px;
+          transform: rotate(37deg);
+        }
       }
     }
   }
-
-
 }
 
 .footer {
@@ -293,4 +621,15 @@ body {
   font-weight: bold;
   max-width: 1294px;
   margin: 46px auto 52px;
+
+  @media(max-width: 1295px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include response-to(small) {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+  }
 }

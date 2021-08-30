@@ -2,7 +2,6 @@
   max-width: 1291px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 240px;
   color: #fff;
   margin-top: 26px;
   height: 96px;
@@ -11,19 +10,119 @@
   width: 100%;
   font-family: 'MDLZBITETYPE';
 
+  @include response-to(small) {
+    margin-top: 0;
+    height: 76px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-right: 109px;
+
+    @media(max-width: 1295px) {
+      margin-right: 50px;
+    }
+
+    @include response-to(medium) {
+      margin-right: 20px;
+
+      img {
+        width: 70px;
+        height: auto;
+      }
+    }
+  }
+
   &__wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    @include response-to(small) {
+      flex-direction: column;
+      position: fixed;
+      min-height: 100vh;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform: translateX(110vw);
+      background-color: #00B8F1;
+      justify-content: flex-start;
+      padding-bottom: 120px;
+      @include transition-ease;
+
+      &.active {
+        transform: translateX(0);
+      }
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        content: '';
+        background-image: url('../../img/menu-bg-min.png');
+      }
+    }
   }
 
   &__item {
+
+    @include response-to(medium) {
+
+      &.account {
+
+        .menu__item_link {
+          font-size: 0;
+
+          @include response-to(small) {
+            font-size: 24px;
+            line-height: 29px;
+          }
+        }
+      }
+    }
+
+    &.active {
+
+      @include response-to(small) {
+        margin-bottom: 40px;
+      }
+    }
+
+    &.mob-logo {
+      display: none;
+      margin-bottom: 50px;
+      margin-top: 20px;
+
+      @include response-to(small) {
+        display: block;
+      }
+    }
+
+    @include response-to(small) {
+      margin-bottom: 23px;
+    }
 
     &_link {
       text-transform: uppercase;
       font-size: 18px;
       line-height: 110%;
+
+      @include response-to(medium) {
+        font-size: 16px;
+      }
+
+      @include response-to(small) {
+        font-size: 24px;
+        line-height: 29px;
+      }
     }
     
     &.active {
@@ -36,6 +135,10 @@
       padding-left: 20px;
       position: relative;
 
+      @include response-to(small) {
+        padding-left: 40px;
+      }
+
       &:before {
         position: absolute;
         content: '';
@@ -47,7 +150,48 @@
         background-image: url('../../img/menu-account.svg');
         background-size: contain;
         background-repeat: no-repeat;
+
+        @include response-to(medium) {
+          width: 23px;
+          height: 24px;
+        }
+
+        @include response-to(small) {
+          background-image: url('../../img/account-mob.svg');
+          width: 30px;
+          height: 30px;
+        }
       }
+    }
+  }
+
+  .mob-menu-btn {
+    display: none;
+    cursor: pointer;
+    position: static;
+    z-index: 1001;
+    width: 30px;
+    height: 31px;
+    background-image: url('../../img/mob-menu-show.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 23px;
+    right: 20px;
+
+    &.active {
+      position: fixed;
+      width: 29px;
+      height: 34px;
+      background-image: url('../../img/mob-menu-hide.svg');
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    @include response-to(small) {
+      display: block;
     }
   }
 }
