@@ -265,14 +265,18 @@ input[type="number"] {
 body,
 html {
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; }
+
+body {
+  min-height: 100vh;
   background-image: url("../img/main-bg.png"), -webkit-radial-gradient(51.2% 21.19%, 78.81% 78.81%, #86E6FF 0%, #017EBE 100%);
   background-image: url("../img/main-bg.png"), radial-gradient(78.81% 78.81% at 51.2% 21.19%, #86E6FF 0%, #017EBE 100%);
   background-size: cover, cover;
   background-blend-mode: screen; }
-
-body {
-  min-height: 100vh; }
+  @media (max-width: 767px) {
+    body {
+      background-image: url("../img/mobile-bg.png"), -webkit-radial-gradient(51.2% 21.19%, 78.81% 78.81%, #86E6FF 0%, #017EBE 100%);
+      background-image: url("../img/mobile-bg.png"), radial-gradient(78.81% 78.81% at 51.2% 21.19%, #86E6FF 0%, #017EBE 100%); } }
 
 .main-bg-img {
   position: absolute;

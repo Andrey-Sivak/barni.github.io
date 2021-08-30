@@ -13,13 +13,17 @@ body,
 html {
   position: relative;
   overflow-x: hidden;
-  background-image: url("../img/main-bg.png"), radial-gradient(78.81% 78.81% at 51.2% 21.19%, #86E6FF 0%, #017EBE 100%);
-  background-size: cover, cover;
-  background-blend-mode: screen;
 }
 
 body {
   min-height: 100vh;
+  background-image: url("../img/main-bg.png"), radial-gradient(78.81% 78.81% at 51.2% 21.19%, #86E6FF 0%, #017EBE 100%);
+  background-size: cover, cover;
+  background-blend-mode: screen;
+
+  @include response-to(small) {
+    background-image: url("../img/mobile-bg.png"), radial-gradient(78.81% 78.81% at 51.2% 21.19%, #86E6FF 0%, #017EBE 100%);
+  }
 }
 
 .main-bg-img {
