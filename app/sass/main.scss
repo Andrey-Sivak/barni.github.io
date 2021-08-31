@@ -40,12 +40,10 @@ body {
 }
 
 .top-perek {
-  z-index: 2;
-  position: absolute;
-  top: -3px;
-  left: 20px;
 
-  display: none;
+  @include response-to(small) {
+    margin-left: -7px;
+  }
 
   img {
     image-rendering: pixelated;
@@ -55,13 +53,17 @@ body {
 .header {
   position: relative;
   z-index: 1;
+  margin-right: calc((100vw - 1230px) / 2);
+  margin-left: 23px;
 
   @media(max-width: 1295px) {
     padding-left: 20px;
     padding-right: 20px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  @include response-to(small) {
+  @include response-to(medium) {
     z-index: 2;
     padding-left: 20px;
     padding-right: 20px;
@@ -113,6 +115,7 @@ body {
     @include response-to(medium) {
       background-position: left top;
       padding-left: 45px;
+      width: 100%;
     }
 
     @include response-to(small) {
