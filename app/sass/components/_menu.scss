@@ -15,10 +15,32 @@
     @media(max-width: 1475px) {
       width: 375px;
       height: auto;
+
+      &-bg {
+        width: 375px;
+        height: auto;
+      }
+
+      &-logo {
+        top: 7px;
+        right: 52px;
+        width: 280px;
+      }
     }
 
     @include response-to(large) {
-      width: 307px;
+      width: 295px;
+
+      &-bg {
+        width: 295px;
+        height: auto;
+      }
+
+      &-logo {
+        top: -6px;
+        right: 34px;
+        width: 222px;
+      }
     }
   }
 
